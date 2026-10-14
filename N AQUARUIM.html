@@ -1,0 +1,1432 @@
+<!-- Nexus Aquarium - open this file in a browser. Keep style.css and script.js in the same folder. -->
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Nexus Aquarium | Washington</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700&display=swap" />
+  <style>
+    /* Nexus Aquarium - styles
+   Change the colours in :root below (sea green + coral). */
+
+    :root {
+      background: linear-gradient(180deg,
+          #063B3B 0%,
+          #052E2E 38%,
+          #021F1F 72%,
+          #011414 100%);
+
+      --bg: #041B1B;
+      --card: #082727;
+      --tx: #D8F3F3;
+      --mu: #83AAAA;
+      --ln: #164747;
+      --ac: #4FB8B8;
+
+      --hd: "Fraunces", Georgia, serif;
+      --bd: "Nunito Sans", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #041B1B;
+        --card: #082727;
+        --tx: #D8F3F3;
+        --mu: #83AAAA;
+        --ln: #164747;
+        --ac: #4FB8B8;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #041B1B;
+      --card: #082727;
+      --tx: #D8F3F3;
+      --mu: #83AAAA;
+      --ln: #164747;
+      --ac: #4FB8B8;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+    }
+
+    html {
+      scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 70px);
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--tx);
+      font: 17px/1.6 var(--bd);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--hd);
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .w {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+
+    nav {
+      position: sticky;
+      top: env(safe-area-inset-top, 0px);
+      z-index: 20;
+      background: var(--deep);
+    }
+
+    nav .w {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      text-decoration: none;
+      font: 700 21px var(--hd);
+    }
+
+    .brand svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+
+    nav a[data-go] {
+      color: #D6F0F0;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: 0.2s;
+    }
+
+    nav a[data-go]:hover {
+      color: #fff;
+      background: #0F5555;
+    }
+
+    nav a.act {
+      background: var(--sea);
+      color: #fff;
+    }
+
+    nav a.bk {
+      background: var(--gold);
+      color: #3D1F00;
+    }
+
+    nav a.bk:hover {
+      background: #F9A65A;
+      color: #3D1F00;
+    }
+
+    #mn {
+      display: none;
+      background: none;
+      border: 2px solid #5AA5A5;
+      color: #fff;
+      border-radius: 8px;
+      padding: 6px 12px;
+      font: 700 15px var(--bd);
+    }
+
+    .page {
+      display: none;
+      padding: 56px 0 72px;
+    }
+
+    .page.on {
+      display: block;
+      animation: pg 0.5s ease;
+    }
+
+    #home {
+      padding-top: 0;
+    }
+
+    @keyframes pg {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+    }
+
+    h2 {
+      font-size: clamp(30px, 4.6vw, 44px);
+      color: var(--ac);
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 22px;
+    }
+
+    .lead {
+      color: var(--mu);
+      max-width: 62ch;
+      margin: 0 0 30px;
+      font-size: 18px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, #2AA6A6 0%, #008080 38%, #005757 72%, #0B3D3D 100%);
+      color: #fff;
+      padding: 70px 0 110px;
+      text-align: center;
+    }
+
+    .hero .logo {
+      width: 120px;
+      height: 120px;
+      animation: fl 6s ease-in-out infinite;
+    }
+
+    @keyframes fl {
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 8vw, 78px);
+      margin: 14px 0 8px;
+    }
+
+    .hero p {
+      font-size: clamp(18px, 2.4vw, 22px);
+      color: #DDF3F3;
+      max-width: 36ch;
+      margin: 0 auto 28px;
+    }
+
+    .hero .in {
+      position: relative;
+      z-index: 2;
+    }
+
+    .bub {
+      position: absolute;
+      bottom: -20px;
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      border-radius: 50%;
+      animation: rs linear infinite;
+    }
+
+    @keyframes rs {
+      to {
+        transform: translateY(-560px);
+        opacity: 0;
+      }
+    }
+
+    .wave {
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 100%;
+      height: 60px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 26px;
+      border-radius: 999px;
+      font: 700 16px var(--bd);
+      text-decoration: none;
+      border: 0;
+      cursor: pointer;
+      margin: 4px;
+      transition: 0.2s;
+    }
+
+    .btn.g {
+      background: var(--gold);
+      color: #3D1F00;
+    }
+
+    .btn.o {
+      border: 2px solid #B2E6E6;
+      color: #fff;
+      background: none;
+    }
+
+    .btn.s {
+      background: var(--sea);
+      color: #fff;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .mos {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: -50px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .ph {
+      margin: 0;
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--ln);
+      aspect-ratio: 4/3;
+      transition: 0.25s;
+    }
+
+    .ph:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(18, 61, 43, 0.2);
+    }
+
+    .ph img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ph .em {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: repeating-linear-gradient(135deg,
+          var(--card),
+          var(--card) 12px,
+          color-mix(in srgb, var(--sea) 8%, var(--card)) 12px,
+          color-mix(in srgb, var(--sea) 8%, var(--card)) 24px);
+      color: var(--mu);
+      font-size: 14px;
+      text-align: center;
+      padding: 8px;
+    }
+
+    .ph .em b {
+      color: var(--ac);
+      font-size: 16px;
+    }
+
+    .ph figcaption {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      padding: 18px 12px 8px;
+      background: linear-gradient(transparent, rgba(18, 61, 43, 0.85));
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      pointer-events: none;
+    }
+
+    .ph .em~figcaption {
+      display: none;
+    }
+
+    .add {
+      cursor: pointer;
+      font: 700 13px var(--bd);
+      background: var(--sea);
+      color: #fff;
+      border-radius: 999px;
+      padding: 5px 12px;
+    }
+
+    .ph img~.add {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      opacity: 0;
+      transition: 0.2s;
+    }
+
+    .ph:hover .add {
+      opacity: 1;
+    }
+
+    .info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 40px;
+    }
+
+    .box {
+      background: var(--card);
+      border: 1px solid var(--ln);
+      border-radius: 16px;
+      padding: 22px;
+    }
+
+    .box h3 {
+      color: var(--ac);
+      margin-bottom: 6px;
+    }
+
+    .box p {
+      margin: 0;
+      color: var(--mu);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 22px;
+    }
+
+    .chip {
+      border: 2px solid var(--sea);
+      background: none;
+      color: var(--ac);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font: 700 15px var(--bd);
+      cursor: pointer;
+    }
+
+    .chip.on {
+      background: var(--sea);
+      color: #fff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .cats {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .cat {
+      background: var(--card);
+      border: 2px solid var(--ln);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: left;
+      cursor: pointer;
+      color: var(--tx);
+      font: inherit;
+      transition: 0.2s;
+    }
+
+    .cat:hover,
+    .cat.on {
+      border-color: var(--sea);
+      transform: translateY(-3px);
+    }
+
+    .cat.on {
+      background: color-mix(in srgb, var(--sea) 10%, var(--card));
+    }
+
+    .cat b {
+      font: 700 19px var(--hd);
+      color: var(--ac);
+      display: block;
+    }
+
+    .cat span {
+      font-size: 14px;
+      color: var(--mu);
+      display: block;
+      margin-top: 4px;
+    }
+
+    .tw {
+      overflow-x: auto;
+      border: 1px solid var(--ln);
+      border-radius: 14px;
+      background: var(--card);
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 640px;
+      font-size: 15px;
+    }
+
+    th {
+      background: var(--sea);
+      color: #fff;
+      text-align: left;
+      padding: 12px 14px;
+      font-weight: 700;
+    }
+
+    td {
+      padding: 11px 14px;
+      border-top: 1px solid var(--ln);
+    }
+
+    tr:nth-child(even) td {
+      background: color-mix(in srgb, var(--sea) 5%, var(--card));
+    }
+
+    .tag {
+      background: color-mix(in srgb, var(--gold) 30%, transparent);
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .note {
+      font-size: 14px;
+      color: var(--mu);
+      margin-top: 10px;
+    }
+
+    .two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .spots {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .spots p {
+      margin: 6px 0 0;
+      font-size: 14px;
+      color: var(--mu);
+    }
+
+    .sub {
+      margin: 44px 0 10px;
+      color: var(--ac);
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .f {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .f.full {
+      grid-column: 1/-1;
+    }
+
+    label {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    input,
+    select {
+      font: inherit;
+      padding: 11px 12px;
+      border: 2px solid var(--ln);
+      border-radius: 10px;
+      background: var(--card);
+      color: var(--tx);
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--sea);
+      outline: none;
+    }
+
+    input[aria-invalid="true"],
+    select[aria-invalid="true"] {
+      border-color: #d6453d;
+    }
+
+    .er {
+      color: #d6453d;
+      font-size: 13.5px;
+      min-height: 18px;
+      font-weight: 600;
+    }
+
+    .ck {
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .ck input {
+      width: 20px;
+      height: 20px;
+    }
+
+    .tot {
+      background: var(--deep);
+      color: #fff;
+      border-radius: 14px;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      grid-column: 1/-1;
+    }
+
+    .tot b {
+      font: 700 28px var(--hd);
+      color: var(--gold);
+    }
+
+    .ok {
+      text-align: center;
+      padding: 30px;
+    }
+
+    .ok h3 {
+      color: var(--ac);
+      font-size: 28px;
+    }
+
+    .ref {
+      font: 700 26px var(--hd);
+      background: var(--deep);
+      color: var(--gold);
+      display: inline-block;
+      padding: 8px 22px;
+      border-radius: 12px;
+      margin: 14px 0;
+    }
+
+    .fb {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .st {
+      color: var(--gold);
+      letter-spacing: 2px;
+      font-size: 20px;
+    }
+
+    .fb .box p {
+      margin: 8px 0 12px;
+      color: var(--tx);
+    }
+
+    .fb small {
+      color: var(--mu);
+    }
+
+    .avg {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .avg b {
+      font: 700 46px var(--hd);
+      color: var(--ac);
+    }
+
+    footer {
+      background: var(--deep);
+      color: #B5DCDC;
+      padding: 34px 0;
+      font-size: 15px;
+    }
+
+    footer .w {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    footer a {
+      color: #D6F0F0;
+      margin-right: 16px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      color: var(--gold);
+    }
+
+    @media (max-width: 860px) {
+      #mn {
+        display: block;
+      }
+
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--deep);
+        flex-direction: column;
+        padding: 10px 22px 18px;
+        align-items: stretch;
+      }
+
+      nav ul.open {
+        display: flex;
+      }
+
+      nav a[data-go] {
+        display: block;
+      }
+
+      .mos,
+      .spots {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .info,
+      .grid,
+      .fb,
+      .two,
+      form {
+        grid-template-columns: 1fr;
+      }
+
+      .cats {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    .btn.s {
+      background: linear-gradient(135deg, #1A9C9C, #006B6B);
+    }
+
+    .btn.g {
+      background: linear-gradient(135deg, #F9A65A, #F28C38);
+    }
+
+    nav {
+      background: linear-gradient(90deg, #0B3D3D, #005757);
+    }
+
+    footer {
+      background: linear-gradient(180deg, #005757, #0B3D3D);
+    }
+
+    th {
+      background: linear-gradient(90deg, #008080, #006B6B);
+    }
+
+    .box {
+      background: linear-gradient(150deg, var(--card), color-mix(in srgb, var(--sea) 9%, var(--card)));
+    }
+
+    .tot {
+      background: linear-gradient(120deg, #005757, #0B3D3D);
+    }
+
+    .ref {
+      background: linear-gradient(120deg, #005757, #0B3D3D);
+    }
+
+    .cat.on {
+      background: linear-gradient(150deg, color-mix(in srgb, var(--sea) 16%, var(--card)), var(--card));
+    }
+
+    .st {
+      color: #f2b233;
+    }
+
+    .hero h1 {
+      text-shadow: 0 2px 18px rgba(18, 61, 43, 0.4);
+    }
+  </style>
+</head>
+
+<body>
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+    <symbol id="lg" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="30" fill="#008080" stroke="#F28C38" stroke-width="3" />
+      <path d="M21 41V21l22 20V21" stroke="#fff" stroke-width="5" fill="none" stroke-linejoin="round"
+        stroke-linecap="round" />
+      <path d="M12 50q5-6 10 0t10 0 10 0 10 0" stroke="#F28C38" stroke-width="3" fill="none" stroke-linecap="round" />
+      <circle cx="48" cy="17" r="3" fill="#F28C38" />
+    </symbol>
+  </svg>
+
+  <nav>
+    <div class="w">
+      <a class="brand" href="#home" data-go="home"><svg role="img" aria-label="Nexus Aquarium logo">
+          <use href="#lg" />
+        </svg>Nexus
+        Aquarium</a>
+      <button id="mn" aria-expanded="false">Menu</button>
+      <ul id="nl">
+        <li><a href="#home" data-go="home">Home</a></li>
+        <li><a href="#gallery" data-go="gallery">Gallery</a></li>
+        <li><a href="#marine" data-go="marine">Marine Life</a></li>
+        <li><a href="#visit" data-go="visit">Visit</a></li>
+        <li><a href="#events" data-go="events">Events</a></li>
+        <li><a href="#feedback" data-go="feedback">Feedback</a></li>
+        <li><a class="bk" href="#book" data-go="book">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="page" id="home">
+      <div class="hero">
+        <div class="in w">
+          <svg class="logo" role="img" aria-label="Nexus Aquarium logo">
+            <use href="#lg" />
+          </svg>
+          <h1>Nexus Aquarium</h1>
+          <p>Where the ocean's newest creatures come to light. Washington.</p>
+          <a class="btn g" href="#book" data-go="book">Book tickets</a><a class="btn o" href="#marine"
+            data-go="marine">Explore marine life</a>
+        </div>
+        <span class="bub" style="left: 10%; width: 14px; height: 14px; animation-duration: 10s"></span><span class="bub"
+          style="
+              left: 32%;
+              width: 22px;
+              height: 22px;
+              animation-duration: 14s;
+              animation-delay: -6s;
+            "></span><span class="bub" style="
+              left: 60%;
+              width: 10px;
+              height: 10px;
+              animation-duration: 9s;
+              animation-delay: -3s;
+            "></span><span class="bub" style="
+              left: 84%;
+              width: 18px;
+              height: 18px;
+              animation-duration: 12s;
+              animation-delay: -8s;
+            "></span>
+        <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 30C240 70 480 0 720 28S1200 60 1440 24V60H0Z" fill="var(--bg)" />
+        </svg>
+      </div>
+      <div class="w">
+        <div class="mos" id="mos"></div>
+        <div class="info">
+          <div class="box">
+            <h3>Location</h3>
+            <p>Nexus Aquarium, Washington, USA. See the Visit page for sightseeing around us.</p>
+          </div>
+          <div class="box">
+            <h3>Opening hours</h3>
+            <p>Tue to Fri 10:00 to 18:00. Sat and Sun 09:00 to 19:00. Closed Mondays.</p>
+          </div>
+          <div class="box">
+            <h3>Newest finds</h3>
+            <p>Discoveries by Hira, Javeria and Manahil are listed in Marine Life.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="gallery">
+      <div class="w">
+        <h2>Gallery</h2>
+        <p class="lead">Sea creatures and views of the aquarium.</p>
+        <div class="chips" id="gc"></div>
+        <div class="grid" id="gg"></div>
+      </div>
+    </section>
+
+    <section class="page" id="marine">
+      <div class="w">
+        <h2>Marine Life</h2>
+        <p class="lead">
+          Explore by category, then see the newest species found in this new era.
+        </p>
+        <div class="cats" id="cats"></div>
+        <h3 class="sub" style="margin-top: 0">Newest discovered species</h3>
+        <div class="tw">
+          <table>
+            <thead>
+              <tr>
+                <th>Species</th>
+                <th>Category</th>
+                <th>Habitat</th>
+                <th>Depth</th>
+                <th>Size</th>
+                <th>Found by</th>
+                <th>Year</th>
+              </tr>
+            </thead>
+            <tbody id="sp"></tbody>
+          </table>
+        </div>
+        <p class="note">Sample data. Replace with your real discoveries.</p>
+      </div>
+    </section>
+
+    <section class="page" id="visit">
+      <div class="w">
+        <h2>Visit Us</h2>
+        <p class="lead">Timings, location and things to see nearby.</p>
+        <div class="two">
+          <div>
+            <h3 class="sub" style="margin-top: 0">Opening times</h3>
+            <div class="tw">
+              <table style="min-width: 0">
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>Hours</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Monday</td>
+                    <td>Closed</td>
+                  </tr>
+                  <tr>
+                    <td>Tuesday to Friday</td>
+                    <td>10:00 to 18:00</td>
+                  </tr>
+                  <tr>
+                    <td>Saturday and Sunday</td>
+                    <td>09:00 to 19:00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="note">Last entry one hour before closing.</p>
+          </div>
+          <div>
+            <h3 class="sub" style="margin-top: 0">Location</h3>
+            <div class="box">
+              <h3>Nexus Aquarium</h3>
+              <p>Washington, USA</p>
+              <p style="margin-top: 8px">
+                Tickets: adults $18, children (3 to 12) $10, under 3 free.
+              </p>
+            </div>
+          </div>
+        </div>
+        <h3 class="sub">Around the aquarium</h3>
+        <div class="spots" id="sp2"></div>
+      </div>
+    </section>
+
+    <section class="page" id="events">
+      <div class="w">
+        <h2>Events</h2>
+        <p class="lead">Separate programs for adults and for children.</p>
+        <h3 class="sub" style="margin-top: 0">Adult events</h3>
+        <div class="tw">
+          <table>
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Day</th>
+                <th>Time</th>
+                <th>Details</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody id="ea"></tbody>
+          </table>
+        </div>
+        <h3 class="sub">Children's events</h3>
+        <div class="tw">
+          <table>
+            <thead>
+              <tr>
+                <th>Event</th>
+                <th>Day</th>
+                <th>Time</th>
+                <th>Details</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody id="ec"></tbody>
+          </table>
+        </div>
+        <p style="margin-top: 24px">
+          <a class="btn s" href="#book" data-go="book">Book your visit</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="page" id="book">
+      <div class="w" style="max-width: 820px">
+        <h2>Book Tickets</h2>
+        <p class="lead">Fill in your details. This is a demo, so no payment is taken.</p>
+        <div class="box" id="bx">
+          <form id="bf" novalidate>
+            <div class="f">
+              <label for="name">Full name</label><input id="name" name="name" autocomplete="name" /><span class="er"
+                data-e="name"></span>
+            </div>
+            <div class="f">
+              <label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" /><span
+                class="er" data-e="email"></span>
+            </div>
+            <div class="f">
+              <label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" /><span
+                class="er" data-e="phone"></span>
+            </div>
+            <div class="f">
+              <label for="date">Visit date</label><input id="date" name="date" type="date" /><span class="er"
+                data-e="date"></span>
+            </div>
+            <div class="f">
+              <label for="slot">Time slot</label><select id="slot" name="slot">
+                <option value="">Choose a slot</option>
+                <option>10:00</option>
+                <option>12:00</option>
+                <option>14:00</option>
+                <option>16:00</option>
+              </select><span class="er" data-e="slot"></span>
+            </div>
+            <div class="f">
+              <label for="adults">Adults ($18 each)</label><input id="adults" name="adults" type="number"
+                value="1" /><span class="er" data-e="adults"></span>
+            </div>
+            <div class="f">
+              <label for="kids">Children ($10 each)</label><input id="kids" name="kids" type="number" value="0" /><span
+                class="er" data-e="kids"></span>
+            </div>
+            <div class="f ck full">
+              <input id="agree" name="agree" type="checkbox" /><label for="agree" style="margin: 0">I accept the booking
+                terms.</label>
+            </div>
+            <span class="er" data-e="agree" style="grid-column: 1/-1"></span>
+            <div class="tot"><span>Total</span><b id="tt">$18</b></div>
+            <div style="grid-column: 1/-1">
+              <button class="btn s" type="submit" style="margin: 0">Confirm booking</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="feedback">
+      <div class="w">
+        <h2>Visitor Feedback</h2>
+        <div class="avg">
+          <b id="av"></b>
+          <div>
+            <div class="st">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <small>Average of sample reviews</small>
+          </div>
+        </div>
+        <div class="fb" id="fbg"></div>
+        <p class="note">Sample feedback from dummy visitors.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="w">
+      <div class="brand" style="font-size: 19px">
+        <svg>
+          <use href="#lg" />
+        </svg>Nexus Aquarium, Washington
+      </div>
+      <div>
+        <a href="#gallery" data-go="gallery">Gallery</a><a href="#marine" data-go="marine">Marine Life</a><a
+          href="#visit" data-go="visit">Visit</a><a href="#events" data-go="events">Events</a><a href="#book"
+          data-go="book">Book</a>
+      </div>
+      <div>By Hira, Javeria and Manahil</div>
+    </div>
+  </footer>
+
+  <script>
+    // Nexus Aquarium - behaviour
+    // Menu/page switching, gallery, marine life table, events, booking form checks.
+
+    const $ = (s) => document.querySelector(s),
+      $$ = (s) => [...document.querySelectorAll(s)];
+    let store = {};
+    try {
+      store = JSON.parse(localStorage.getItem("nx") || "{}");
+    } catch (e) { }
+    const fill = (id, l) =>
+      store[id]
+        ? `<img src="${store[id]}" alt="${l}"><label class="add">Change<input type="file" accept="image/*" hidden></label><figcaption>${l}</figcaption>`
+        : `<div class="em"><b>${l}</b><span>Photo goes here</span><label class="add">Add photo<input type="file" accept="image/*" hidden></label></div>`;
+    const slot = (id, l) => `<figure class="ph" data-id="${id}" data-l="${l}">${fill(id, l)}</figure>`;
+    document.addEventListener("change", (e) => {
+      const i = e.target;
+      if (i.type !== "file" || !i.files[0]) return;
+      const f = i.closest(".ph"),
+        r = new FileReader();
+      r.onload = () => {
+        const m = new Image();
+        m.onload = () => {
+          const k = Math.min(1, 900 / m.width),
+            c = document.createElement("canvas");
+          c.width = m.width * k;
+          c.height = m.height * k;
+          c.getContext("2d").drawImage(m, 0, 0, c.width, c.height);
+          store[f.dataset.id] = c.toDataURL("image/jpeg", 0.8);
+          try {
+            localStorage.setItem("nx", JSON.stringify(store));
+          } catch (x) { }
+          $$(`[data-id="${f.dataset.id}"]`).forEach(
+            (p) => (p.innerHTML = fill(p.dataset.id, p.dataset.l)),
+          );
+        };
+        m.src = r.result;
+      };
+      r.readAsDataURL(i.files[0]);
+    });
+
+    function go(p) {
+      if (!$("#" + p)) p = "home";
+      $$(".page").forEach((s) => s.classList.toggle("on", s.id === p));
+      $$("nav a[data-go]").forEach((a) =>
+        a.classList.toggle("act", a.dataset.go === p && !a.classList.contains("brand")),
+      );
+      $("#nl").classList.remove("open");
+      $("#mn").setAttribute("aria-expanded", "false");
+      scrollTo(0, 0);
+    }
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("[data-go]");
+      if (a) {
+        e.preventDefault();
+        go(a.dataset.go);
+      }
+    });
+    $("#mn").onclick = () => {
+      const o = $("#nl").classList.toggle("open");
+      $("#mn").setAttribute("aria-expanded", o);
+    };
+
+    $("#mos").innerHTML = [
+      ["h1", "Jellyfish"],
+      ["h2", "Sea turtle"],
+      ["h3", "Coral reef"],
+      ["h4", "Octopus"],
+    ]
+      .map((x) => slot(...x))
+      .join("");
+    const G = [
+      ["Clownfish", "c"],
+      ["Seahorse", "c"],
+      ["Manta ray", "c"],
+      ["Dolphin", "c"],
+      ["Starfish", "c"],
+      ["Whale shark", "c"],
+      ["Main tank hall", "a"],
+      ["Touch pool", "a"],
+      ["Entrance", "a"],
+    ];
+    const gr = (f) =>
+    ($("#gg").innerHTML = G.map((x, i) => [x, i])
+      .filter(([x]) => f === "all" || x[1] === f)
+      .map(([x, i]) => slot("g" + i, x[0]))
+      .join(""));
+    $("#gc").innerHTML = [
+      ["all", "All"],
+      ["c", "Sea creatures"],
+      ["a", "Aquarium"],
+    ]
+      .map(([k, l], i) => `<button class="chip${i ? "" : " on"}" data-k="${k}">${l}</button>`)
+      .join("");
+    $("#gc").onclick = (e) => {
+      const b = e.target.closest(".chip");
+      if (!b) return;
+      $$("#gc .chip").forEach((c) => c.classList.toggle("on", c === b));
+      gr(b.dataset.k);
+    };
+    gr("all");
+
+    const C = [
+      ["Fish", "Gills, fins and scales. Tens of thousands of species."],
+      ["Mammals", "Warm-blooded air breathers like whales and dolphins."],
+      ["Invertebrates", "No backbone: jellyfish, octopuses, crabs."],
+      ["Reptiles", "Sea turtles and sea snakes that return to land to lay eggs."],
+      ["Corals", "Tiny animals that build reefs and shelter other life."],
+    ];
+    const S = [
+      ["Nexus glow jelly", "Invertebrates", "Open water", "50 to 300 m", "12 cm", "Hira", "2025"],
+      ["Emerald reef goby", "Fish", "Coral reef", "5 to 30 m", "4 cm", "Javeria", "2025"],
+      ["Twilight octopus", "Invertebrates", "Deep slope", "400 m", "30 cm", "Manahil", "2026"],
+      ["Silver-lure angler", "Fish", "Deep sea", "800 m", "25 cm", "Hira", "2026"],
+      ["Royal fan coral", "Corals", "Reef wall", "20 to 60 m", "80 cm", "Javeria", "2025"],
+      [
+        "Green-back sea turtle",
+        "Reptiles",
+        "Seagrass beds",
+        "Surface to 40 m",
+        "90 cm",
+        "Manahil",
+        "2026",
+      ],
+      ["Bluefin porpoise", "Mammals", "Coastal waters", "Surface to 100 m", "1.6 m", "Hira", "2026"],
+      ["Pearl comb jelly", "Invertebrates", "Open water", "100 to 500 m", "8 cm", "Javeria", "2026"],
+    ];
+    let cat = "";
+    const sp = () => {
+      $("#sp").innerHTML = S.filter((r) => !cat || r[1] === cat)
+        .map(
+          (r) =>
+            `<tr><td><b>${r[0]}</b></td><td><span class="tag">${r[1]}</span></td>${r
+              .slice(2)
+              .map((v) => `<td>${v}</td>`)
+              .join("")}</tr>`,
+        )
+        .join("");
+      $$(".cat").forEach((b) => b.classList.toggle("on", b.dataset.c === cat));
+    };
+    $("#cats").innerHTML = C.map(
+      (c) => `<button class="cat" data-c="${c[0]}"><b>${c[0]}</b><span>${c[1]}</span></button>`,
+    ).join("");
+    $("#cats").onclick = (e) => {
+      const b = e.target.closest(".cat");
+      if (b) {
+        cat = cat === b.dataset.c ? "" : b.dataset.c;
+        sp();
+      }
+    };
+    sp();
+
+    $("#sp2").innerHTML = [
+      ["Waterfront promenade", "An easy walk beside the water."],
+      ["Aquarium entrance plaza", "Our front doors and gardens."],
+      ["Harbour viewpoint", "Wide views over the water."],
+      ["Coastal trail", "A gentle path with sea air."],
+    ]
+      .map((x, i) => `<div>${slot("v" + i, x[0])}<p>${x[1]}</p></div>`)
+      .join("");
+    const ev = (a) =>
+      a
+        .map(
+          (r) =>
+            `<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td></tr>`,
+        )
+        .join("");
+    $("#ea").innerHTML = ev([
+      [
+        "Marine Science Evening",
+        "Wednesday",
+        "18:30 to 20:00",
+        "Talks from the team on new discoveries.",
+        "$15",
+      ],
+      [
+        "Night Tank Tour",
+        "Friday",
+        "19:00 to 21:00",
+        "After-hours walk through the main tanks.",
+        "$22",
+      ],
+      [
+        "Sunset Photography Walk",
+        "Saturday",
+        "17:00 to 18:30",
+        "Photograph the aquarium and waterfront.",
+        "$20",
+      ],
+      ["Coffee and Corals", "Sunday", "09:00 to 10:30", "Relaxed morning talk about reefs.", "$12"],
+    ]);
+    $("#ec").innerHTML = ev([
+      [
+        "Touch Pool Adventure",
+        "Wednesday",
+        "15:30 to 16:30",
+        "Gentle hands-on session. Ages 5 to 10.",
+        "$8",
+      ],
+      [
+        "Sea Craft Workshop",
+        "Friday",
+        "16:00 to 17:00",
+        "Make ocean art to take home. Ages 6 to 12.",
+        "$8",
+      ],
+      [
+        "Little Explorers Storytime",
+        "Saturday",
+        "10:30 to 11:30",
+        "Sea stories and songs. Ages 3 to 6.",
+        "Free",
+      ],
+      [
+        "Junior Marine Detectives",
+        "Sunday",
+        "13:00 to 14:30",
+        "Find clues and identify species. Ages 7 to 12.",
+        "$10",
+      ],
+    ]);
+    const R = [
+      [
+        "Ayesha K.",
+        "Bellevue",
+        5,
+        "The new species table helped my class so much. We learned something new.",
+      ],
+      [
+        "Daniel M.",
+        "Seattle",
+        5,
+        "Beautiful place and friendly staff. The night tour was our favourite.",
+      ],
+      ["Priya S.", "Tacoma", 4, "My kids loved the touch pool. Booking online was quick."],
+      ["Tom H.", "Olympia", 5, "A great mix of science and fun. We will be back for the next event."],
+      ["Sara L.", "Spokane", 4, "Clear signs, calm atmosphere and lovely views nearby."],
+    ];
+    $("#fbg").innerHTML = R.map(
+      (r) =>
+        `<div class="box"><div class="st">${"&#9733;".repeat(r[2])}${"&#9734;".repeat(5 - r[2])}</div><p>${r[3]}</p><b>${r[0]}</b><br><small>${r[1]}, Washington</small></div>`,
+    ).join("");
+    $("#av").textContent = (R.reduce((a, r) => a + r[2], 0) / R.length).toFixed(1);
+
+    const F = $("#bf");
+    F.elements.date.min = new Date().toISOString().slice(0, 10);
+    const tot = () => {
+      const a = +F.elements.adults.value || 0,
+        k = +F.elements.kids.value || 0;
+      $("#tt").textContent = "$" + (a * 18 + k * 10);
+    };
+    F.addEventListener("input", tot);
+    const E = (n, m) => {
+      const el = F.querySelector(`[data-e="${n}"]`);
+      el.textContent = m;
+      const i = F.elements[n];
+      i.setAttribute("aria-invalid", m ? "true" : "false");
+      return !m;
+    };
+    const cnt = (n, lo, hi, l) => {
+      const v = F.elements[n].value.trim(),
+        x = Number(v);
+      return E(
+        n,
+        v === "" || !Number.isInteger(x) || x < lo || x > hi
+          ? `${l}: enter a whole number from ${lo} to ${hi}.`
+          : "",
+      );
+    };
+    F.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const v = (n) => F.elements[n].value.trim(),
+        t = new Date();
+      t.setHours(0, 0, 0, 0);
+      const dt = new Date(v("date") + "T00:00"),
+        ph = v("phone").replace(/\D/g, "");
+      const r = [
+        E(
+          "name",
+          /^[A-Za-z][A-Za-z .'-]{2,}$/.test(v("name"))
+            ? ""
+            : "Enter your full name (letters only, at least 3 characters).",
+        ),
+        E(
+          "email",
+          /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v("email"))
+            ? ""
+            : "Enter a valid email such as name@example.com.",
+        ),
+        E(
+          "phone",
+          /^\+?[0-9 ()-]+$/.test(v("phone")) && ph.length >= 7 && ph.length <= 15
+            ? ""
+            : "Enter a phone number with 7 to 15 digits.",
+        ),
+        E(
+          "date",
+          !v("date")
+            ? "Choose a visit date."
+            : dt < t
+              ? "The date cannot be in the past."
+              : dt.getDay() === 1
+                ? "We are closed on Mondays. Pick another day."
+                : "",
+        ),
+        E("slot", v("slot") ? "" : "Select a time slot."),
+        cnt("adults", 1, 10, "Adults"),
+        cnt("kids", 0, 10, "Children"),
+        E("agree", F.elements.agree.checked ? "" : "Please accept the terms to continue."),
+      ];
+      if (!r.every(Boolean)) {
+        const b = F.querySelector('[aria-invalid="true"]');
+        b && b.focus();
+        return;
+      }
+      const ref = "NX-" + Math.random().toString(36).slice(2, 8).toUpperCase();
+      $("#bx").innerHTML =
+        `<div class="ok"><h3>Booking confirmed</h3><p>Thank you, ${v("name").replace(/</g, "&lt;")}. A confirmation would be sent to ${v("email").replace(/</g, "&lt;")}.</p><div class="ref">${ref}</div><p>${v("date")} at ${v("slot")}<br>${v("adults")} adult(s), ${v("kids")} child(ren). Total ${$("#tt").textContent}</p><button class="btn s" data-go="book" onclick="location.reload()">Make another booking</button></div>`;
+    });
+    go("home");
+  </script>
+</body>
+
+</html>

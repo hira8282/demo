@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Oceanic Aquarium</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            background: #021b2b;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 8%;
+            background: rgba(0, 20, 35, 0.85);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #39d9ff;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #39d9ff;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 40px;
+            background:
+                linear-gradient(rgba(0, 30, 50, 0.6), rgba(0, 10, 25, 0.8)),
+                url("https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #39d9ff;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #00bfff;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #008fcc;
+            transform: translateY(-3px);
+        }
+
+        /* COMMON */
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            color: #39d9ff;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #b7d5df;
+        }
+
+        /* ABOUT */
+        .about {
+            background: #03263a;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #c4dbe3;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* SERVICES */
+        .services {
+            background: #021b2b;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: #07344b;
+            padding: 35px 25px;
+            border-radius: 18px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid rgba(57, 217, 255, 0.15);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #39d9ff;
+            box-shadow: 0 10px 30px rgba(0, 191, 255, 0.15);
+        }
+
+        .card .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 23px;
+        }
+
+        .card p {
+            color: #b7d5df;
+            line-height: 1.6;
+        }
+
+        /* FISH */
+        .fish-section {
+            background: #03263a;
+        }
+
+        .fish-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .fish-card {
+            overflow: hidden;
+            border-radius: 18px;
+            background: #062f43;
+        }
+
+        .fish-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .fish-card div {
+            padding: 20px;
+        }
+
+        .fish-card h3 {
+            color: #39d9ff;
+            margin-bottom: 8px;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: #021b2b;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            background: #07344b;
+            padding: 35px;
+            border-radius: 18px;
+        }
+
+        .contact-info h3 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #39d9ff;
+        }
+
+        .contact-info p {
+            margin: 18px 0;
+            color: #c4dbe3;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            outline: none;
+            border-radius: 8px;
+            background: #07344b;
+            color: white;
+        }
+
+        textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        button {
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #00bfff;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #008fcc;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #01121d;
+            text-align: center;
+            padding: 25px;
+            color: #8eb2bf;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .about-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .service-grid,
+            .fish-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+
+            nav ul li a {
+                font-size: 13px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 65px 5%;
+            }
+
+            .service-grid,
+            .fish-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">🌊 Oceanic<span>Aquarium</span></div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#fish">Fish</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HOME -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Discover The <span>Magic</span> Of Ocean</h1>
+
+            <p>
+                Explore an amazing underwater world filled with beautiful
+                fish, colorful coral reefs and unforgettable marine life.
+            </p>
+
+            <a href="#services" class="btn">Explore Aquarium</a>
+        </div>
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+
+        <div class="section-title">
+            <h2>About Us</h2>
+            <p>Where ocean life comes alive</p>
+        </div>
+
+        <div class="about-container">
+
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=900&q=80"
+                     alt="Aquarium">
+            </div>
+
+            <div class="about-text">
+                <h3>Welcome To Oceanic Aquarium</h3>
+
+                <p>
+                    Oceanic Aquarium is a beautiful underwater experience
+                    where visitors can discover colorful fish, coral reefs
+                    and fascinating marine creatures.
+                </p>
+
+                <p>
+                    Our goal is to create an educational and enjoyable
+                    environment for families, students and ocean lovers.
+                </p>
+
+                <a href="#contact" class="btn">Contact Us</a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>Experience the underwater world</p>
+        </div>
+
+        <div class="service-grid">
+
+            <div class="card">
+                <div class="icon">🐠</div>
+                <h3>Aquarium Tour</h3>
+                <p>
+                    Enjoy an exciting tour through our beautiful underwater
+                    exhibits.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🪸</div>
+                <h3>Coral Experience</h3>
+                <p>
+                    Discover colorful coral reefs and learn about marine
+                    ecosystems.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🐢</div>
+                <h3>Marine Life</h3>
+                <p>
+                    Meet fascinating marine animals and discover their
+                    amazing lives.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎓</div>
+                <h3>Educational Tours</h3>
+                <p>
+                    Special educational tours designed for students and
+                    schools.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">📸</div>
+                <h3>Photo Experience</h3>
+                <p>
+                    Capture beautiful memories with our amazing underwater
+                    environments.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🎟️</div>
+                <h3>Online Tickets</h3>
+                <p>
+                    Book your aquarium visit easily and enjoy a wonderful
+                    day with your family.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FISH -->
+    <section class="fish-section" id="fish">
+
+        <div class="section-title">
+            <h2>Marine Life</h2>
+            <p>Meet some of our amazing underwater friends</p>
+        </div>
+
+        <div class="fish-grid">
+
+            <div class="fish-card">
+                <img src="https://images.unsplash.com/photo-1544550285-f813152fb2fd?auto=format&fit=crop&w=800&q=80"
+                     alt="Tropical Fish">
+
+                <div>
+                    <h3>Colorful Fish</h3>
+                    <p>Beautiful tropical fish from the ocean.</p>
+                </div>
+            </div>
+
+            <div class="fish-card">
+                <img src="https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=800&q=80"
+                     alt="Coral Reef">
+
+                <div>
+                    <h3>Coral Reef</h3>
+                    <p>Explore colorful underwater coral ecosystems.</p>
+                </div>
+            </div>
+
+            <div class="fish-card">
+                <img src="https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&w=800&q=80"
+                     alt="Sea Turtle">
+
+                <div>
+                    <h3>Sea Turtle</h3>
+                    <p>Discover the peaceful world of sea turtles.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>We would love to hear from you</p>
+        </div>
+
+        <div class="contact-container">
+
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+
+                <p>📍 Ocean Road, Karachi, Pakistan</p>
+                <p>📞 +92 300 1234567</p>
+                <p>📧 info@oceanicaquarium.com</p>
+                <p>🕐 Monday - Sunday: 10 AM - 8 PM</p>
+            </div>
+
+            <form id="contactForm">
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Your Name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Your Email"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="subject"
+                    placeholder="Subject"
+                    required
+                >
+
+                <textarea
+                    id="message"
+                    placeholder="Your Message"
+                    required
+                ></textarea>
+
+                <button type="submit">Send Message</button>
+
+            </form>
+
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Oceanic Aquarium. All Rights Reserved.</p>
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // Contact Form
+        document.getElementById("contactForm").addEventListener("submit", function(e) {
+
+            e.preventDefault();
+
+            const name = document.getElementById("name").value;
+
+            alert(
+                "Thank you, " + name +
+                "! Your message has been received."
+            );
+
+            this.reset();
+        });
+
+
+        // Navbar shadow on scroll
+        window.addEventListener("scroll", function() {
+
+            const nav = document.querySelector("nav");
+
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = "0 5px 25px rgba(0,0,0,0.4)";
+            } else {
+                nav.style.boxShadow = "none";
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
+
+    
+</body>
+</html>
